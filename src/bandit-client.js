@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
+(function(angular) {
 
 angular
-  .module('bandit', [])
+  .module('bandit', ['LocalForageModule'])
 
   .provider('$bandit', function() {
     var cfg = {
@@ -24,7 +25,22 @@ angular
         var deferred = $q.defer();
         var $bandit = {
           '$resolved': false,
-          '$promise': deferred.promise
+          '$promise': deferred.promise,
+          '$reward': function(experiments) {
+            if (angular.isString(experiments)){ experiments = [experiments]; }
+
+            var rewards = {};
+            angular.forEach(experiments, function(exp) {
+              rewards[exp] = $bandit[exp];
+            });
+
+            if (Object.keys(rewards) == 0){ return; }
+
+            return $http.put(cfg.uri, rewards, {
+                transformRequest: toFormUrlEncoded,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            });
+          }
         };
 
         var params = {}; // maps array to comma string
@@ -50,3 +66,16 @@ angular
       }]
     }
   });
+
+
+function toFormUrlEncoded(obj) {
+  var formData = [];
+  angular.forEach(obj, function(v, k) {
+    formData.push(encodeURIComponent(k) + "=" + encodeURIComponent(v));
+  });
+
+  return formData.join("&");
+}
+
+
+})(angular);
