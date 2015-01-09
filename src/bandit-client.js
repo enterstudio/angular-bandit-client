@@ -5,7 +5,8 @@ angular
 
   .provider('$bandit', function() {
     var cfg = {
-      experiments: {}
+      experiments: {},
+      uri: {}
     };
 
     return {
@@ -14,18 +15,37 @@ angular
         return this;
       },
 
-      '$get': ['$q', function($q) {
+      uri: function (uri) {
+        cfg.uri = uri;
+        return this;
+      },
+
+      '$get': ['$q', '$http', function($q, $http) {
         var deferred = $q.defer();
         var $bandit = {
           '$resolved': false,
           '$promise': deferred.promise
         };
 
+        var params = {}; // maps array to comma string
         angular.forEach(cfg.experiments, function(arms, name) {
-          $bandit[name] = arms[0];
+          params[name] = arms.join(',');
         });
 
-        deferred.resolve($bandit);
+        $http.get(cfg.uri, {params: params})
+          .success(function(data) {
+            angular.extend($bandit, data);
+          })
+          .error(function() {
+            angular.forEach(cfg.experiments, function(arms, name) {
+              $bandit[name] = arms[0];
+            });
+          })
+          .finally(function() {
+            $bandit.$resolved = true;
+            deferred.resolve($bandit);
+          });
+
         return $bandit;
       }]
     }

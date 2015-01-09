@@ -8,6 +8,7 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-localforage/dist/angular-localForage.js',
       "src/*.js",
+      "test/setup.coffee",
       "test/*Spec.coffee"
     ],
     exclude: [],
