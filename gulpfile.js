@@ -1,7 +1,10 @@
 'use strict';
 
 var gulp = require('gulp'),
-    karma = require('gulp-karma');
+    karma = require('gulp-karma'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    zopfli = require('gulp-zopfli');
 
 var testingSrc = [
   'node_modules/localforage/dist/localforage.js',
@@ -33,3 +36,15 @@ gulp.task('test:watch', function() {
       action: 'watch'
     }))
 });
+
+
+gulp.task('dist', function(){
+  return gulp
+    .src('src/angular-bandit-client.js')
+    .pipe(gulp.dest('dist/'))
+    .pipe(uglify({preserveComments:false}))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest('dist/'))
+    .pipe(zopfli({append: true}))
+    .pipe(gulp.dest('dist/'));
+  });

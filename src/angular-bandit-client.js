@@ -33,10 +33,8 @@ angular
           '$resolved': false,
           '$promise': deferred.promise,
           '$reward': function() {
-            if (angular.isString(experiments)){ experiments = [experiments]; }
-
             var rewards = {};
-            angular.forEach(experiments, function(exp) {
+            angular.forEach(arguments, function(exp) {
               rewards[exp] = $bandit[exp];
             });
 
