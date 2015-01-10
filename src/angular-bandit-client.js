@@ -4,6 +4,17 @@
 angular
   .module('bandit', ['LocalForageModule'])
 
+  .directive('banditReward', function($bandit) {
+    return {
+      restrict: 'A',
+      link: function(scope, el$, attrs) {
+        el$.on('click', function() {
+          $bandit.$reward.apply($bandit, attrs.banditReward.split(","));
+        });
+      }
+    }
+  })
+
   .provider('$bandit', function() {
     var cfg = {
       experiments: {},

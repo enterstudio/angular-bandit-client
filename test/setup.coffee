@@ -24,11 +24,12 @@ angular.module 'testApp', ['bandit']
 
 beforeEach ->
   module 'testApp'
-  inject ($rootScope, $httpBackend, $localForage, $q) ->
+  inject ($rootScope, $httpBackend, $localForage, $q, $compile) ->
     global.$rootScope = $rootScope
     global.$httpBackend = $httpBackend
     global.$localForage = $localForage
     global.$q = $q
+    global.$compile = $compile
 
     $localForage.clear()
 

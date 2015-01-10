@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     zopfli = require('gulp-zopfli');
 
 var testingSrc = [
+  'node_modules/jquery/dist/jquery.js',
   'node_modules/localforage/dist/localforage.js',
   'node_modules/angular/angular.js',
   'node_modules/angular-mocks/angular-mocks.js',

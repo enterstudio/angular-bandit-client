@@ -3,6 +3,7 @@ module.exports = function(config) {
     basePath: '.',
     frameworks: ['jasmine'],
     files: [
+      'node_modules/jquery/dist/jquery.js',
       'node_modules/localforage/dist/localforage.js',
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
