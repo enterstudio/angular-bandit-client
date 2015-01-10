@@ -9,7 +9,7 @@ module.exports = function(config) {
       'node_modules/angular-localforage/dist/angular-localForage.js',
       "src/*.js",
       "test/setup.coffee",
-      "test/*Spec.coffee"
+      "test/*-spec.coffee"
     ],
     exclude: [],
     preprocessors: {

@@ -10,7 +10,7 @@ var testingSrc = [
   'node_modules/angular-localforage/dist/angular-localForage.js',
   "src/*.js",
   "test/setup.coffee",
-  "test/*Spec.coffee"
+  "test/*-spec.coffee"
 ]
 
 gulp.task('test', function() {
