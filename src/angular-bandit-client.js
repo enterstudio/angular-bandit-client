@@ -32,7 +32,7 @@ angular
         var $bandit = {
           '$resolved': false,
           '$promise': deferred.promise,
-          '$reward': function(experiments) {
+          '$reward': function() {
             if (angular.isString(experiments)){ experiments = [experiments]; }
 
             var rewards = {};
