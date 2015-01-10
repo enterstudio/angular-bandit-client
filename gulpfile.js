@@ -47,4 +47,4 @@ gulp.task('dist', function(){
     .pipe(gulp.dest('dist/'))
     .pipe(zopfli({append: true}))
     .pipe(gulp.dest('dist/'));
-  });
+});
