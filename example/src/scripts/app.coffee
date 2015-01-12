@@ -21,7 +21,7 @@ angular
 
   .config ($banditProvider) ->
     $banditProvider
-      .uri "https://mab-server.herokuapp.com/ucb1"
+      .uri "https://bandit-server.herokuapp.com/ucb1"
       .add 'actionsLayout', ['left','center']
       .add 'downloadButtonText', ['getit','appon']
       .add 'downloadButtonSize', ['regular', 'big']
