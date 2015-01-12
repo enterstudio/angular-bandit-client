@@ -93,8 +93,17 @@ Experiments are async loaded from the local cache or http backend; and some expe
 
 If backend fails, it will draw the first arm in each experiment (that are not cached) as default.
 
+## Example Project
 
-# Contributing
+We included an fully functional example at [example](https://github.com/peleteiro/angular-bandit-client/tree/master/example) folder.
+
+It's an mobile app landing page and we test the download button with 3 experiments:
+
+- Position: left or center align.
+- Size: big or regular button size.
+- Text: Google Play offers two kind of button: "Android app on" and "Get in on".
+
+## Contributing
 
 We encourage you to contribute! Please check out the guidelines about how to proceed.
 
@@ -111,6 +120,6 @@ Make sure to add tests for the feature/bugfix. This is important so I don't brea
 
 * Please try not to mess with the gulpfile.js, package.json, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate it to its own commit so I can cherry-pick around it.
 
-# License
+## License
 
 angular-bandit-client is released under the [MIT License](http://www.opensource.org/licenses/MIT).

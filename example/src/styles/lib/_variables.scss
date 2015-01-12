@@ -1,0 +1,5 @@
+$grid-gutter-width: 30px;
+$container-desktop: (940px + $grid-gutter-width);
+$container-large-desktop: $container-desktop;
+
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
