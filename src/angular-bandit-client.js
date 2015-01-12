@@ -19,7 +19,7 @@ angular
     var cfg = {
       experiments: {},
       uri: {},
-      tts: 7 * 24 * 60 * 60 * 1000 // 7 days
+      ttl: 7 * 24 * 60 * 60 * 1000 // 7 days
     };
 
     return {
@@ -107,12 +107,12 @@ angular
   });
 
 function isCacheValid(item, arms, cfg) {
-  return !!item && arms.indexOf(item.arm) > -1 && item.ts > (new Date().getTime() - cfg.ttl)
+  return !!item && arms.indexOf(item.arm) > -1 && item.ts > (new Date().getTime() - cfg.ttl);
 }
 
 function saveCache($bandit, $localForage) {
   angular.forEach($bandit, function(arm, name) {
-    $localForage.setItem("$bandit:" + name, {arm: arm, ts: new Date().getTime()})
+    $localForage.setItem("$bandit:" + name, {arm: arm, ts: new Date().getTime()});
   })
 };
 
